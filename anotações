@@ -1,0 +1,22 @@
+git init
+Transforma a pasta em um projeto git.
+
+git remote add origin <link do repositório no github>
+Linka o projeto com o repositório no github.
+
+git add .
+Adiciona todos os arquivos do projeto.
+
+git commit -m "mensagem do commit"
+Confirma as mudanças.
+
+git push origin master
+Envia as alterações ao repositório remoto.
+
+git pull
+Atualiza o repositório local de acordo com o repositório remoto.
+
+gitk
+Interface gráfica padrão.
+
+Referência: https://gist.github.com/leocomelli/2545add34e4fec21ec16
