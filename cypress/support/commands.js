@@ -1,14 +1,8 @@
 // ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
 // For more comprehensive examples of custom
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-
-import loc from './locators'
 //
 // -- This is a parent command --
 // Cypress.Commands.add("login", (email, password) => { ... })
@@ -24,6 +18,7 @@ import loc from './locators'
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+import loc from './locators'
 
 Cypress.Commands.add('clickAlert', (locator, message) => {
     cy.on('window:alert', msg => {
@@ -42,4 +37,19 @@ Cypress.Commands.add('login', (user, passwd) => {
 Cypress.Commands.add('resetApp', () => {
     cy.get(loc.MENU.SETTINGS).click()
     cy.get(loc.MENU.RESET).click()
+})
+
+Cypress.Commands.add('getToken', (user, passwd) => {
+    cy.request({
+        method: 'POST',
+        url: 'https://barrigarest.wcaquino.me/signin',
+        body: {
+            email: 'user',
+            redirecionar: false,
+            senha: 'passwd'
+        }
+    }).its('body.token').should('not.be.empty')
+      .then(token => {
+        return token
+      })
 })
