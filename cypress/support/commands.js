@@ -70,9 +70,7 @@ Cypress.Commands.add('getContaByName', name => {
             url: '/contas',
             method: 'GET',
             headers: { Authorization: `JWT ${token}` },
-            qs: {
-                nome: name
-            }
+            qs: { nome: name }
         }).then(res => {
             return res.body[0].id
         })
