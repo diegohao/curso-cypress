@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Should test at a functional level', () => {
+describe('Should test at a backend level', () => {
     let token
     
     before(() => {
