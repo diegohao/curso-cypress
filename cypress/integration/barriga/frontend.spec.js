@@ -71,6 +71,7 @@ describe('Should test at a frontend level', () => {
       }).as('contasSaved')
 
       cy.inserirConta('Conta de teste')
+      cy.get(loc.MESSAGE).should('contain', 'Conta inserida com sucesso')
     })
 
     it('Should update an account', () => {
