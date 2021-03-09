@@ -42,7 +42,7 @@ describe('Should test at a frontend level', () => {
       cy.get(loc.MENU.HOME).click()
     })
 
-    it.only('Should create an account', () => {
+    it('Should create an account', () => {
       cy.route({
         method: 'GET',
         url: '/contas',
@@ -74,6 +74,29 @@ describe('Should test at a frontend level', () => {
     })
 
     it('Should update an account', () => {
+      cy.route({
+        method: 'GET',
+        url: '/contas',
+        response: [
+          { id: 1, nome: 'Carteira', visivel: true, usuario_id: 1 },
+          { id: 2, nome: 'Banco', visivel: true, usuario_id: 1 }
+        ]        
+      }).as('Contas')
+      
+      cy.route({
+        method: 'PUT',
+        url: 'contas/**',
+        response: { id: 1, nome: 'Conta alterada', visivel: true, usuario_id: 1 }
+      })
+      
+      cy.acessarMenuConta()
+      
+      cy.xpath(loc.CONTAS.FN_XP_BTN_ALTERAR('Banco')).click()
+      cy.get(loc.CONTAS.NOME)
+        .clear()
+        .type('Conta alterada')
+      cy.get(loc.CONTAS.BTN_SALVAR).click()
+      cy.get(loc.MESSAGE).should('contain', 'Conta atualizada com sucesso')
     })
 
     it('Should not create an account with same name', () => {
