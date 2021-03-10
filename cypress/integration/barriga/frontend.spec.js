@@ -56,6 +56,18 @@ describe('Should test at a frontend level', () => {
     })
 
     it('Should not create an account with same name', () => {
+      cy.route({
+        method: 'POST',
+        url: '/contas',
+        response: { "error": "Já existe uma conta com esse nome!" },
+        status: 400
+      }).as('saveContaMesmoNome')
+      
+      cy.acessarMenuConta()
+      
+      cy.inserirConta('Conta mesmo nome')
+      cy.get(loc.CONTAS.BTN_SALVAR).click()
+      cy.get(loc.MESSAGE).should('contain', 'code 400')
     })
 
     it('Should create a transaction', () => {
