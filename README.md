@@ -1,4 +1,7 @@
 # curso-cypress
+
+[![CI](https://github.com/diegohao/curso-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/diegohao/curso-cypress/actions/workflows/ci.yml)
+
 Automação de testes funcionais, de back-end e front-end utilizando Cypress.
 
 # Cypress básico
