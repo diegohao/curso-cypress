@@ -1,6 +1,8 @@
 # curso-cypress
 
 [![CI](https://github.com/diegohao/curso-cypress/actions/workflows/ci.yml/badge.svg)](https://github.com/diegohao/curso-cypress/actions/workflows/ci.yml)
+[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
+![cypress version](https://img.shields.io/badge/cypress-3.6.0-brightgreen) 
 
 Automação de testes funcionais, de back-end e front-end utilizando Cypress.
 
